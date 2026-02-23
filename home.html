@@ -52,10 +52,10 @@
   <main class="w-[80%] mx-auto">
     <h2 class=" text-[#002C5C] text-[24px] font-bold mb-[24px]">Available Jobs</h2>
     <div class="gap-[8px] mb-4">
-      <button id="all-filter-btn"
+      <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn"
         class="bg-[#3B82F6] text-white px-[36px] py-[10px] rounded-sm font-medium">All</button>
-      <button id="interview-filter-btn" class="bg-white px-[14px] py-[10px] rounded-sm font-medium">Interview</button>
-      <button id="rejected-filter-btn" class="bg-white px-[14px] py-[10px] rounded-sm font-medium">Rejected</button>
+      <button onclick="toggleStyle('interview-filter-btn')" id="interview-filter-btn" class="bg-white px-[14px] py-[10px] rounded-sm font-medium">Interview</button>
+      <button onclick="toggleStyle('rejected-filter-btn')" id="rejected-filter-btn" class="bg-white px-[14px] py-[10px] rounded-sm font-medium">Rejected</button>
     </div>
 
     <section id="job-card" class="p-[24px]">
@@ -72,9 +72,9 @@
               <p>•</p>
               <p class="salary text-[#64748B]">$130,000 - $175,000</p>
             </div>
-            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+            <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium applied">NOT
               APPLIED</p>
-            <p class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used
+            <p class="text-[#323B49] notes">Build cross-platform mobile applications using React Native. Work on products used
               by millions of users worldwide.</p>
             <div class="mt-[20px]">
               <button id="interview-btn"
@@ -102,9 +102,9 @@
               <p>•</p>
               <p class="salary text-[#64748B]">$80,000 - $120,000</p>
             </div>
-            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+            <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium applied">NOT
               APPLIED</p>
-            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+            <p class="text-[#323B49] notes">Create stunning web experiences for high-profile clients. Must have portfolio and
               experience with modern web design
               trends.</p>
             <div class="mt-[20px]">
@@ -133,9 +133,9 @@
               <p>•</p>
               <p class="salary text-[#64748B]">$125,000 - $165,000</p>
             </div>
-            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+            <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium applied">NOT
               APPLIED</p>
-            <p class="text-[#323B49]">Transform complex data into compelling visualizations. Required skills: D3.js,
+            <p class="text-[#323B49] notes">Transform complex data into compelling visualizations. Required skills: D3.js,
               React, and strong analytical thinking.</p>
             <div class="mt-[20px]">
               <button id="interview-btn"
@@ -163,9 +163,9 @@
               <p>•</p>
               <p class="salary text-[#64748B]">$130,000 - $175,000</p>
             </div>
-            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+            <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium applied">NOT
               APPLIED</p>
-            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+            <p class="text-[#323B49] notes">Create stunning web experiences for high-profile clients. Must have portfolio and
               experience with modern web design
               trends.</p>
             <div class="mt-[20px]">
@@ -194,9 +194,9 @@
               <p>•</p>
               <p class="salary text-[#64748B]">$130,000 - $175,000</p>
             </div>
-            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+            <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium applied">NOT
               APPLIED</p>
-            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+            <p class="text-[#323B49] notes">Create stunning web experiences for high-profile clients. Must have portfolio and
               experience with modern web design
               trends.</p>
             <div class="mt-[20px]">
@@ -225,9 +225,9 @@
               <p>•</p>
               <p class="salary text-[#64748B]">$130,000 - $175,000</p>
             </div>
-            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+            <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium applied">NOT
               APPLIED</p>
-            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+            <p class="text-[#323B49] notes">Create stunning web experiences for high-profile clients. Must have portfolio and
               experience with modern web design
               trends.</p>
             <div class="mt-[20px]">
@@ -256,9 +256,9 @@
               <p>•</p>
               <p class="salary text-[#64748B]">$130,000 - $175,000</p>
             </div>
-            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+            <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium applied">NOT
               APPLIED</p>
-            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+            <p class="text-[#323B49] notes">Create stunning web experiences for high-profile clients. Must have portfolio and
               experience with modern web design
               trends.</p>
             <div class="mt-[20px]">
@@ -287,9 +287,9 @@
               <p>•</p>
               <p class="salary text-[#64748B]">$130,000 - $175,000</p>
             </div>
-            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+            <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium applied">NOT
               APPLIED</p>
-            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+            <p class="text-[#323B49] notes">Create stunning web experiences for high-profile clients. Must have portfolio and
               experience with modern web design
               trends.</p>
             <div class="mt-[20px]">
