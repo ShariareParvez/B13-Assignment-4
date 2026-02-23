@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: "Geist", sans-serif;
+    }
+  </style>
+  <title>Home</title>
+</head>
+
+<body class="bg-[#EEF4FF]">
+  <header class="w-[80%] mx-auto mt-[60px]">
+    <div class="flex items-center justify-between">
+      <h1 class="text-[32px] font-bold text-[#002C5C] mb-5">Job Application Tracker</h1>
+      <div class="flex items-center gap-1">
+        <p>0</p>
+        <p>jobs</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="bg-white p-[20px] rounded-md">
+        <p class="text-[#323B49] font-medium">Total</p>
+        <p id="totalCount" class="text-[#002C5C] text-[24px] font-bold">0</p>
+      </div>
+
+      <div class="bg-white p-[20px] rounded-md">
+        <p class="text-[#323B49] font-medium">Interview</p>
+        <p id="interviewCount" class="text-[#10B981] text-[24px] font-bold">0</p>
+      </div>
+
+      <div class="bg-white p-[20px] rounded-md">
+        <p class="text-[#323B49] font-medium">Rejected</p>
+        <p id="rejectedCount" class="text-[#EF4444] text-[24px] font-bold">0</p>
+      </div>
+    </div>
+  </header>
+
+  <hr class="my-[30px] border-[#E6E7E9] w-[80%] mx-auto">
+
+  <main class="w-[80%] mx-auto">
+    <h2 class=" text-[#002C5C] text-[24px] font-bold mb-[24px]">Available Jobs</h2>
+    <div class="gap-[8px] mb-4">
+      <button id="all-filter-btn"
+        class="bg-[#3B82F6] text-white px-[36px] py-[10px] rounded-sm font-medium">All</button>
+      <button id="interview-filter-btn" class="bg-white px-[14px] py-[10px] rounded-sm font-medium">Interview</button>
+      <button id="rejected-filter-btn" class="bg-white px-[14px] py-[10px] rounded-sm font-medium">Rejected</button>
+    </div>
+
+    <section id="job-card" class="p-[24px]">
+      <!-- card 1 -->
+      <div class="flex justify-between bg-white cards-1 p-[24px] mb-[16px]">
+        <div>
+          <div>
+            <p class="company text-[#002C5C]-[18px] font-bold">Mobile First Corp</p>
+            <p class="jobtitle text-[#64748B]-4 text-[#64748B] text-[16px]">React Native Developer</p>
+            <div class="flex gap-3 justify-between-start job-info my-[20px]">
+              <p class="location text-[#64748B]">Remote</p>
+              <p>•</p>
+              <p class="job-type text-[#64748B]">Full-time</p>
+              <p>•</p>
+              <p class="salary text-[#64748B]">$130,000 - $175,000</p>
+            </div>
+            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+              APPLIED</p>
+            <p class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used
+              by millions of users worldwide.</p>
+            <div class="mt-[20px]">
+              <button id="interview-btn"
+                class="bg-white text-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium border-[2px] border-[#10B981]">interview</button>
+              <button id="rejected-btn"
+                class="bg-white border-[2px] border-[#EF4444] text-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium">Rejected</button>
+            </div>
+          </div>
+        </div>
+        <!-- delete part -->
+        <div>
+          <a id="delete-btn" href=""><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+      </div>
+      <!-- card 2 -->
+      <div class="flex justify-between bg-white cards-1 p-[24px] mb-[16px]">
+        <div>
+          <div>
+            <p class="company text-[#002C5C]-[18px] font-bold">WebFlow Agency</p>
+            <p class="jobtitle text-[#64748B]-4 text-[#64748B] text-[16px]">Web Designer & Developer</p>
+            <div class="flex gap-3 justify-between-start job-info my-[20px]">
+              <p class="location text-[#64748B]">Los Angeles, CA</p>
+              <p>•</p>
+              <p class="job-type text-[#64748B]">Part-time</p>
+              <p>•</p>
+              <p class="salary text-[#64748B]">$80,000 - $120,000</p>
+            </div>
+            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+              APPLIED</p>
+            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+              experience with modern web design
+              trends.</p>
+            <div class="mt-[20px]">
+              <button id="interview-btn"
+                class="bg-white text-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium border-[2px] border-[#10B981]">interview</button>
+              <button id="rejected-btn"
+                class="bg-white border-[2px] border-[#EF4444] text-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium">Rejected</button>
+            </div>
+          </div>
+        </div>
+        <!-- delete part -->
+        <div>
+          <a id="delete-btn" href=""><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+      </div>
+      <!-- card 3 -->
+      <div class="flex justify-between bg-white cards-1 p-[24px] mb-[16px]">
+        <div>
+          <div>
+            <p class="company text-[#002C5C]-[18px] font-bold">DataViz Solutions</p>
+            <p class="jobtitle text-[#64748B]-4 text-[#64748B] text-[16px]">Data Visualization Specialist</p>
+            <div class="flex gap-3 justify-between-start job-info my-[20px]">
+              <p class="location text-[#64748B]">Boston, MA</p>
+              <p>•</p>
+              <p class="job-type text-[#64748B]">Full-time</p>
+              <p>•</p>
+              <p class="salary text-[#64748B]">$125,000 - $165,000</p>
+            </div>
+            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+              APPLIED</p>
+            <p class="text-[#323B49]">Transform complex data into compelling visualizations. Required skills: D3.js,
+              React, and strong analytical thinking.</p>
+            <div class="mt-[20px]">
+              <button id="interview-btn"
+                class="bg-white text-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium border-[2px] border-[#10B981]">interview</button>
+              <button id="rejected-btn"
+                class="bg-white border-[2px] border-[#EF4444] text-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium">Rejected</button>
+            </div>
+          </div>
+        </div>
+        <!-- delete part -->
+        <div>
+          <a id="delete-btn" href=""><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+      </div>
+      <!-- card 4 -->
+      <div class="flex justify-between bg-white cards-1 p-[24px] mb-[16px]">
+        <div>
+          <div>
+            <p class="company text-[#002C5C]-[18px] font-bold">Mobile First Corp</p>
+            <p class="jobtitle text-[#64748B]-4 text-[#64748B] text-[16px]">React Native Developer</p>
+            <div class="flex gap-3 justify-between-start job-info my-[20px]">
+              <p class="location text-[#64748B]">Remote</p>
+              <p>•</p>
+              <p class="job-type text-[#64748B]">Full-time</p>
+              <p>•</p>
+              <p class="salary text-[#64748B]">$130,000 - $175,000</p>
+            </div>
+            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+              APPLIED</p>
+            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+              experience with modern web design
+              trends.</p>
+            <div class="mt-[20px]">
+              <button id="interview-btn"
+                class="bg-white text-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium border-[2px] border-[#10B981]">interview</button>
+              <button id="rejected-btn"
+                class="bg-white border-[2px] border-[#EF4444] text-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium">Rejected</button>
+            </div>
+          </div>
+        </div>
+        <!-- delete part -->
+        <div>
+          <a id="delete-btn" href=""><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+      </div>
+      <!-- card 5 -->
+      <div class="flex justify-between bg-white cards-1 p-[24px] mb-[16px]">
+        <div>
+          <div>
+            <p class="company text-[#002C5C]-[18px] font-bold">Mobile First Corp</p>
+            <p class="jobtitle text-[#64748B]-4 text-[#64748B] text-[16px]">React Native Developer</p>
+            <div class="flex gap-3 justify-between-start job-info my-[20px]">
+              <p class="location text-[#64748B]">Remote</p>
+              <p>•</p>
+              <p class="job-type text-[#64748B]">Full-time</p>
+              <p>•</p>
+              <p class="salary text-[#64748B]">$130,000 - $175,000</p>
+            </div>
+            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+              APPLIED</p>
+            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+              experience with modern web design
+              trends.</p>
+            <div class="mt-[20px]">
+              <button id="interview-btn"
+                class="bg-white text-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium border-[2px] border-[#10B981]">interview</button>
+              <button id="rejected-btn"
+                class="bg-white border-[2px] border-[#EF4444] text-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium">Rejected</button>
+            </div>
+          </div>
+        </div>
+        <!-- delete part -->
+        <div>
+          <a id="delete-btn" href=""><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+      </div>
+      <!-- card 6 -->
+      <div class="flex justify-between bg-white cards-1 p-[24px] mb-[16px]">
+        <div>
+          <div>
+            <p class="company text-[#002C5C]-[18px] font-bold">Mobile First Corp</p>
+            <p class="jobtitle text-[#64748B]-4 text-[#64748B] text-[16px]">React Native Developer</p>
+            <div class="flex gap-3 justify-between-start job-info my-[20px]">
+              <p class="location text-[#64748B]">Remote</p>
+              <p>•</p>
+              <p class="job-type text-[#64748B]">Full-time</p>
+              <p>•</p>
+              <p class="salary text-[#64748B]">$130,000 - $175,000</p>
+            </div>
+            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+              APPLIED</p>
+            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+              experience with modern web design
+              trends.</p>
+            <div class="mt-[20px]">
+              <button id="interview-btn"
+                class="bg-white text-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium border-[2px] border-[#10B981]">interview</button>
+              <button id="rejected-btn"
+                class="bg-white border-[2px] border-[#EF4444] text-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium">Rejected</button>
+            </div>
+          </div>
+        </div>
+        <!-- delete part -->
+        <div>
+          <a id="delete-btn" href=""><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+      </div>
+      <!-- card 7 -->
+      <div class="flex justify-between bg-white cards-1 p-[24px] mb-[16px]">
+        <div>
+          <div>
+            <p class="company text-[#002C5C]-[18px] font-bold">Mobile First Corp</p>
+            <p class="jobtitle text-[#64748B]-4 text-[#64748B] text-[16px]">React Native Developer</p>
+            <div class="flex gap-3 justify-between-start job-info my-[20px]">
+              <p class="location text-[#64748B]">Remote</p>
+              <p>•</p>
+              <p class="job-type text-[#64748B]">Full-time</p>
+              <p>•</p>
+              <p class="salary text-[#64748B]">$130,000 - $175,000</p>
+            </div>
+            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+              APPLIED</p>
+            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+              experience with modern web design
+              trends.</p>
+            <div class="mt-[20px]">
+              <button id="interview-btn"
+                class="bg-white text-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium border-[2px] border-[#10B981]">interview</button>
+              <button id="rejected-btn"
+                class="bg-white border-[2px] border-[#EF4444] text-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium">Rejected</button>
+            </div>
+          </div>
+        </div>
+        <!-- delete part -->
+        <div>
+          <a id="delete-btn" href=""><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+      </div>
+      <!-- card 8 -->
+      <div class="flex justify-between bg-white cards-1 p-[24px] mb-[16px]">
+        <div>
+          <div>
+            <p class="company text-[#002C5C]-[18px] font-bold">Mobile First Corp</p>
+            <p class="jobtitle text-[#64748B]-4 text-[#64748B] text-[16px]">React Native Developer</p>
+            <div class="flex gap-3 justify-between-start job-info my-[20px]">
+              <p class="location text-[#64748B]">Remote</p>
+              <p>•</p>
+              <p class="job-type text-[#64748B]">Full-time</p>
+              <p>•</p>
+              <p class="salary text-[#64748B]">$130,000 - $175,000</p>
+            </div>
+            <p id="applied" class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium">NOT
+              APPLIED</p>
+            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and
+              experience with modern web design
+              trends.</p>
+            <div class="mt-[20px]">
+              <button id="interview-btn"
+                class="bg-white text-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium border-[2px] border-[#10B981]">interview</button>
+              <button id="rejected-btn"
+                class="bg-white border-[2px] border-[#EF4444] text-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium">Rejected</button>
+            </div>
+          </div>
+        </div>
+        <!-- delete part -->
+        <div>
+          <a id="delete-btn" href=""><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white ">
+      <div class="h-[400px] flex flex-col items-center justify-center">
+        <div class="mb-20px"> <img src="jobs.png" alt=""></div>
+        <div class="text-center ">
+          <h2 class="text-[24px] text-[#002C5C] font-semibold ">No jobs available</h2>
+          <p class="text-[#64748B]">Check back soon for new job opportunities</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="job.js"></script>
+</body>
+
+</html>
