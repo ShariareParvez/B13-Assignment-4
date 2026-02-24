@@ -23,10 +23,28 @@ function calculateCounts() {
   interviewCounts.innerText = interViewList.length;
   rejectedCounts.innerText = rejectedList.length;
   totalJobs.innerText = jobCard.children.length;
+
+  const emptySection = document.getElementById('empty-job');
+  if (jobCard.children.length === 0) {
+    emptySection.classList.remove('hidden');
+  } else {
+    emptySection.classList.add('hidden');
+  }
+  
+  if (rejectedList.length === 0 ) {
+    emptySection.classList.remove('hidden');
+  }else{
+    emptySection.classList.add('hidden');
+  }
+  if (interViewList.length === 0) {
+    emptySection.classList.remove('hidden');
+  }else{
+    emptySection.classList.add('hidden');
+  }
 }
 
-calculateCounts();
 
+calculateCounts();
 
 function toggleStyle(id) {
 
@@ -35,6 +53,7 @@ function toggleStyle(id) {
   allFilterBtn.classList.remove('bg-[#3B82F6]', 'text-white');
   interviewFilterBtn.classList.remove('bg-[#3B82F6]', 'text-white');
   rejectedFilterBtn.classList.remove('bg-[#3B82F6]', 'text-white');
+  
 
   allFilterBtn.classList.add('bg-white', 'text-black');
   interviewFilterBtn.classList.add('bg-white', 'text-black');
@@ -43,6 +62,8 @@ function toggleStyle(id) {
   const selected = document.getElementById(id);
   selected.classList.remove('bg-white', 'text-black');
   selected.classList.add('bg-[#3B82F6]', 'text-white');
+
+
 
   if (id === 'all-filter-btn') {
     jobCard.classList.remove('hidden');
