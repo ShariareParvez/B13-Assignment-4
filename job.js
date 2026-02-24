@@ -23,24 +23,6 @@ function calculateCounts() {
   interviewCounts.innerText = interViewList.length;
   rejectedCounts.innerText = rejectedList.length;
   totalJobs.innerText = jobCard.children.length;
-
-  const emptySection = document.getElementById('empty-job');
-  if (jobCard.children.length === 0) {
-    emptySection.classList.remove('hidden');
-  } else {
-    emptySection.classList.add('hidden');
-  }
-  
-  if (rejectedList.length === 0 ) {
-    emptySection.classList.remove('hidden');
-  }else{
-    emptySection.classList.add('hidden');
-  }
-  if (interViewList.length === 0) {
-    emptySection.classList.remove('hidden');
-  }else{
-    emptySection.classList.add('hidden');
-  }
 }
 
 
@@ -63,11 +45,18 @@ function toggleStyle(id) {
   selected.classList.remove('bg-white', 'text-black');
   selected.classList.add('bg-[#3B82F6]', 'text-white');
 
-
+  const emptySection = document.getElementById('empty-job');
 
   if (id === 'all-filter-btn') {
     jobCard.classList.remove('hidden');
     filteredSection.classList.add('hidden');
+    
+    if (jobCard.children.length === 0) {
+      emptySection.classList.remove('hidden');
+    } else {
+      emptySection.classList.add('hidden');
+    }
+    calculateCounts();
   } else if (id === 'interview-filter-btn') {
     jobCard.classList.add('hidden');
     filteredSection.classList.remove('hidden');
@@ -91,7 +80,7 @@ mainContainer.addEventListener('click', function (event) {
     const jobTitle = parentNode.querySelector('.jobtitle').innerText;
     const locations = parentNode.querySelector('.location').innerText;
     const jobType = parentNode.querySelector('.job-type').innerText;
-     const salary = parentNode.querySelector('.salary').innerText;
+    const salary = parentNode.querySelector('.salary').innerText;
     const notesJob = parentNode.querySelector('.notes').innerText;
 
     const jobData = {
@@ -164,8 +153,29 @@ mainContainer.addEventListener('click', function (event) {
     event.preventDefault();
 
     const parentNode = event.target.closest('.cards-1');
+    const companyName = parentNode.querySelector('.company').innerText;
 
     parentNode.remove();
+
+    // Remove from lists
+    interViewList = interViewList.filter(item => item.companyName !== companyName);
+    rejectedList = rejectedList.filter(item => item.companyName !== companyName);
+
+    const emptySection = document.getElementById('empty-job');
+
+    // Re-render based on current view
+    if (currentStatus === 'interview-filter-btn') {
+      renderInterview();
+    } else if (currentStatus === 'rejected-filter-btn') {
+      renderRejected();
+    } else if (currentStatus === 'all-filter-btn') {
+      // Check if cards are empty in all view
+      if (jobCard.children.length === 0) {
+        emptySection.classList.remove('hidden');
+      } else {
+        emptySection.classList.add('hidden');
+      }
+    }
 
     calculateCounts();
   }
@@ -175,6 +185,14 @@ mainContainer.addEventListener('click', function (event) {
 function renderInterview() {
 
   filteredSection.innerHTML = '';
+  const emptySection = document.getElementById('empty-job');
+
+  if (interViewList.length === 0) {
+    emptySection.classList.remove('hidden');
+    return;
+  }
+
+  emptySection.classList.add('hidden');
 
   for (let interview of interViewList) {
 
@@ -213,6 +231,14 @@ function renderInterview() {
 
 function renderRejected() {
   filteredSection.innerHTML = '';
+  const emptySection = document.getElementById('empty-job');
+
+  if (rejectedList.length === 0) {
+    emptySection.classList.remove('hidden');
+    return;
+  }
+
+  emptySection.classList.add('hidden');
 
   for (let reject of rejectedList) {
     let div = document.createElement('div');
@@ -228,7 +254,7 @@ function renderRejected() {
           <p>•</p>
           <p class="salary text-[#64748B]">${reject.salary}</p>
         </div>
-        <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 font-medium applied">
+        <p class="bg-[#EEF4FF] inline-block px-[12px] py-[8px] mb-2 text-[#002C5C] font-medium applied">
           Rejected
         </p>
         <p class="text-[#323B49] notes">${reject.notesJob}</p>
