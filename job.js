@@ -5,10 +5,13 @@ let currentStatus = 'all-filter-btn';
 let totalCounts = document.getElementById('totalCount');
 let interviewCounts = document.getElementById('interviewCount');
 let rejectedCounts = document.getElementById('rejectedCount');
+let totalJobs = document.getElementById('totalJob');
+let deleteBtn = document.getElementById('delete-btn');
 
 const jobCard = document.getElementById('job-card');
 const mainContainer = document.querySelector('main');
 const filteredSection = document.getElementById('filtered-section');
+
 
 const allFilterBtn = document.getElementById('all-filter-btn');
 const interviewFilterBtn = document.getElementById('interview-filter-btn');
@@ -19,6 +22,7 @@ function calculateCounts() {
   totalCounts.innerText = jobCard.children.length;
   interviewCounts.innerText = interViewList.length;
   rejectedCounts.innerText = rejectedList.length;
+  totalJobs.innerText = jobCard.children.length;
 }
 
 calculateCounts();
@@ -53,6 +57,8 @@ function toggleStyle(id) {
     renderRejected();
   }
 }
+
+
 
 mainContainer.addEventListener('click', function (event) {
 
@@ -94,8 +100,7 @@ mainContainer.addEventListener('click', function (event) {
     }
 
     calculateCounts();
-  }
-  else if (event.target.classList.contains('rejected-btn')) {
+  }else if (event.target.classList.contains('rejected-btn')) {
 
     const parentNode = event.target.parentNode.parentNode;
 
@@ -131,6 +136,15 @@ mainContainer.addEventListener('click', function (event) {
     else if (currentStatus === 'rejected-filter-btn') {
       renderRejected();
     }
+
+    calculateCounts();
+  } else if (event.target.closest('#delete-btn')) {
+
+    event.preventDefault();
+
+    const parentNode = event.target.closest('.cards-1');
+
+    parentNode.remove();
 
     calculateCounts();
   }
@@ -198,10 +212,10 @@ function renderRejected() {
         </p>
         <p class="text-[#323B49] notes">${reject.notesJob}</p>
         <div class="mt-[20px]">
-          <button class="interview-btn border-[2px] border-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium">
+          <button class="bg-white text-[#10B981] px-[20px] py-[8px] rounded-[6px] font-medium border-[2px] border-[#10B981] interview-btn">
             Interview
           </button>
-          <button class="rejected-btn border-[2px] border-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium">
+          <button class="bg-white border-[2px] border-[#EF4444] text-[#EF4444] px-[20px] py-[8px] rounded-[6px] font-medium rejected-btn">
             Rejected
           </button>
         </div>
@@ -211,4 +225,9 @@ function renderRejected() {
   }
 }
 
-
+deleteBtn.addEventListener('click', function (event) {
+  if (event.target.classList.contains('delete-btn')) {
+    event.target.closest('.cards-1').remove();
+    calculateCounts();
+  }
+  });
