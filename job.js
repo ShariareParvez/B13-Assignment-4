@@ -157,19 +157,16 @@ mainContainer.addEventListener('click', function (event) {
 
     parentNode.remove();
 
-    // Remove from lists
     interViewList = interViewList.filter(item => item.companyName !== companyName);
     rejectedList = rejectedList.filter(item => item.companyName !== companyName);
 
     const emptySection = document.getElementById('empty-job');
-
-    // Re-render based on current view
     if (currentStatus === 'interview-filter-btn') {
       renderInterview();
     } else if (currentStatus === 'rejected-filter-btn') {
       renderRejected();
     } else if (currentStatus === 'all-filter-btn') {
-      // Check if cards are empty in all view
+  
       if (jobCard.children.length === 0) {
         emptySection.classList.remove('hidden');
       } else {

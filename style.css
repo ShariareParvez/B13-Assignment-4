@@ -1,0 +1,12 @@
+* {
+  font-family: "Geist", sans-serif;
+}
+
+
+@media screen and (max-width: 768px) and (min-width: 400px) {
+.job-info{
+  display: flex;
+  flex-direction: column;
+  gap : 0px;
+}
+ }
